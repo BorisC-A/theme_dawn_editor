@@ -1,0 +1,24 @@
+<div>
+  {% if section.settings.imagen %}
+    <img
+      src="{{ section.settings.imagen | image_url: width: 1200 }}"
+      alt="{{ section.settings.imagen.alt }}"
+      style="width: 100%;"
+    >
+  {% else %}
+    <p>No hay imagen seleccionada</p>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "ultima_imagen",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "ultima_imagen",
+      "label": "ultima imagen"
+    }
+  ]
+}
+{% endschema %}
