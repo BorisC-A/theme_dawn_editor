@@ -1,4 +1,5 @@
 <div>
+  {{ section.settings.imagen | json }}
   {% if section.settings.imagen %}
     <img
       src="{{ section.settings.imagen | image_url: width: 1200 }}"
