@@ -17,7 +17,9 @@
     },
     "destacados_section": {
       "type": "destacados-section",
-      "settings": {}
+      "settings": {
+        "product": "producto-destacado-de-ejemplo"
+      }
     },
     "image_banner": {
       "type": "image-banner",
