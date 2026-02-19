@@ -181,7 +181,9 @@
     },
     "ultima-imagen": {
       "type": "last-section",
-      "settings": {}
+      "settings": {
+        "ultima_imagen": "shopify://shop_images/person-stands-on-rocks-poking-out-of-the-ocean-shoreline.jpg"
+      }
     },
     "multicolumn": {
       "type": "multicolumn",
