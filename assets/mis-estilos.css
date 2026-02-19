@@ -1,4 +1,6 @@
 .mi-imagen {
-    width: 100px;
-    height: 100px;
+    width: 930px;
+    height: 930px;
+    display: block;
+    margin: 0 auto;
 }
