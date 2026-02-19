@@ -1,2 +1,14 @@
-{{ cart.item_count }}
-{{ cart.total_price | money }}
+{{ section.settings.titulo }}
+
+{% schema %}
+{
+  "name": "Seccion de prueba",
+  "settings": [
+    {
+      "type": "text",
+      "id": "titulo",
+      "label": "titulo"
+    }
+  ]
+}
+{% endschema %}
