@@ -20,8 +20,32 @@
       </p>
 
       {% form 'product', product %}
-        <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
-        <button type="submit" class="btn">Agregar al carrito</button>
+        {% if product.has_only_default_variant %}
+          <input
+            type="hidden"
+            name="id"
+            value="{{ product.selected_or_first_available_variant.id }}"
+          >
+        {% else %}
+          <select name="id">
+            {% for variant in product.variants %}
+              <option
+                value="{{ variant.id }}"
+                {% if variant == product.selected_or_first_available_variant %}
+                  selected
+                {% endif %}
+              >
+                {{ variant.title }} - {{ variant.price | money }}
+              </option>
+            {% endfor %}
+          </select>
+        {% endif %}
+
+        {% if product.available %}
+          <button type="submit" class="btn">Agregar al carrito</button>
+        {% else %}
+          <button type="button" class="btn" disabled>Sin stock</button>
+        {% endif %}
       {% endform %}
     </div>
   </div>
