@@ -1,11 +1,7 @@
 <div>
-  {{ section.settings.imagen | json }}
-  {% if section.settings.imagen %}
-    <img
-      src="{{ section.settings.ultima_imagen | image_url: width: 1200 }}"
-      alt="{{ section.settings.ultima_imagen.alt }}"
-      style="width: 100%;"
-    >
+  {{ section.settings.ultima_imagen | json }}
+  {% if section.settings.ultima_imagen %}
+    {{ section.settings.ultima_imagen | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'mi-imagen' }}
   {% else %}
     <p>No hay imagen seleccionada</p>
   {% endif %}
