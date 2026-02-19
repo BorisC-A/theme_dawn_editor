@@ -6,10 +6,12 @@
 }
 
 /*Seccion Producto destacado custom*/
-.btn {
-    background-color: red;
-}
-
 .seccion-prueba__titulo {
     background-color: aquamarine;
+    margin: 0;
+    text-align: center;
+}
+
+.btn {
+    background-color: red;
 }
