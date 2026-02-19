@@ -164,6 +164,10 @@
         "padding_bottom": 36
       }
     },
+    "ultima-imagen": {
+      "type": "last-section",
+      "settings": {}
+    },
     "multicolumn": {
       "type": "multicolumn",
       "blocks": {
@@ -226,6 +230,7 @@
     "featured_collection",
     "collage",
     "video",
+    "ultima-imagen",
     "multicolumn"
   ]
 }
