@@ -259,18 +259,11 @@
             "icon_image": "shopify://shop_images/iphone-detects-qr-code.jpg",
             "text": "Texto descriptivo"
           }
-        },
-        "icon_text_raWgea": {
-          "type": "icon_text",
-          "settings": {
-            "text": "Texto descriptivo"
-          }
         }
       },
       "block_order": [
         "icon_text_YbtHfK",
-        "icon_text_V8JWyb",
-        "icon_text_raWgea"
+        "icon_text_V8JWyb"
       ],
       "name": "Iconos con texto",
       "settings": {}
