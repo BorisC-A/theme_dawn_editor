@@ -12,7 +12,7 @@
     "mi-seccion-test": {
       "type": "section-test",
       "settings": {
-        "titulo": "Hola desde el schema"
+        "titulo": "Producto destacado de la semana"
       }
     },
     "destacados_section": {
@@ -181,9 +181,7 @@
     },
     "ultima-imagen": {
       "type": "last-section",
-      "settings": {
-        "ultima_imagen": "shopify://shop_images/person-stands-on-rocks-poking-out-of-the-ocean-shoreline.jpg"
-      }
+      "settings": {}
     },
     "multicolumn": {
       "type": "multicolumn",
