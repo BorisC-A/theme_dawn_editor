@@ -257,7 +257,7 @@
           "type": "icon_text",
           "settings": {
             "icon_image": "shopify://shop_images/iphone-detects-qr-code.jpg",
-            "text": "Texto descriptivo"
+            "text": "Texto editable 2"
           }
         }
       },
