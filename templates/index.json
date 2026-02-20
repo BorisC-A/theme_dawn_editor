@@ -18,7 +18,7 @@
     "destacados_section": {
       "type": "destacados-section",
       "settings": {
-        "product": ""
+        "product": "firma"
       }
     },
     "image_banner": {
@@ -168,7 +168,7 @@
     "collection_grid_custom": {
       "type": "collection-grid-custom",
       "settings": {
-        "collection": "coleccion-de-verano",
+        "collection": "coleccion-primeros-4",
         "products_to_show": 4
       }
     },
