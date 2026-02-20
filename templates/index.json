@@ -249,12 +249,14 @@
         "icon_text_YbtHfK": {
           "type": "icon_text",
           "settings": {
+            "icon_image": "shopify://shop_images/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
             "text": "Texto descriptivo"
           }
         },
         "icon_text_V8JWyb": {
           "type": "icon_text",
           "settings": {
+            "icon_image": "shopify://shop_images/iphone-detects-qr-code.jpg",
             "text": "Texto descriptivo"
           }
         },
