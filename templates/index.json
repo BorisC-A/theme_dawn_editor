@@ -12,7 +12,7 @@
     "mi-seccion-test": {
       "type": "section-test",
       "settings": {
-        "titulo": "Producto estrella"
+        "titulo": "Hola desde el schema"
       }
     },
     "destacados_section": {
@@ -250,7 +250,7 @@
           "type": "icon_text",
           "settings": {
             "icon_image": "shopify://shop_images/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
-            "text": "Texto descriptivo"
+            "text": "Texto editable 1"
           }
         },
         "icon_text_V8JWyb": {
