@@ -12,7 +12,7 @@
     "mi-seccion-test": {
       "type": "section-test",
       "settings": {
-        "titulo": "Hola desde el schema"
+        "titulo": "Producto estrella"
       }
     },
     "destacados_section": {
