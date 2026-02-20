@@ -267,6 +267,34 @@
       ],
       "name": "Iconos con texto",
       "settings": {}
+    },
+    "manual_slider_GpmWAf": {
+      "type": "manual-slider",
+      "blocks": {
+        "slide_7WDkJy": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/secu.jpg",
+            "text": ""
+          }
+        },
+        "slide_eNJxqm": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/b.jpg",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_7WDkJy",
+        "slide_eNJxqm"
+      ],
+      "name": "Slider manual",
+      "settings": {
+        "autoplay": false,
+        "autoplay_speed": 4000
+      }
     }
   },
   "order": [
@@ -280,6 +308,7 @@
     "video",
     "ultima-imagen",
     "multicolumn",
-    "icon_text_blocks_CwkxyU"
+    "icon_text_blocks_CwkxyU",
+    "manual_slider_GpmWAf"
   ]
 }
