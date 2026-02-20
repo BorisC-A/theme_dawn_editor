@@ -1,5 +1,7 @@
-console.log("Slider JS cargado");
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("shopify:section:load", initSliders);
+document.addEventListener("DOMContentLoaded", initSliders);
+
+function initSliders() {
   const sliders = document.querySelectorAll(".manual-slider");
 
   sliders.forEach(function (slider) {
@@ -7,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const slides = slider.querySelectorAll(".slide");
     const nextBtn = slider.querySelector(".next");
     const prevBtn = slider.querySelector(".prev");
+
+    if (!track || slides.length === 0) return;
 
     let index = 0;
     const totalSlides = slides.length;
@@ -29,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Autoplay
     const autoplay = slider.dataset.autoplay === "true";
     const speed = parseInt(slider.dataset.speed);
 
@@ -37,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       setInterval(function () {
         index = (index + 1) % totalSlides;
         updateSlider();
-      }, speed);
+      }, speed || 4000);
     }
   });
-});
+}
