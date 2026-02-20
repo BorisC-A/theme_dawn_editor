@@ -1,0 +1,163 @@
+<div class="manual-slider" id="slider-{{ section.id }}">
+  <div class="slider-track">
+    {% for block in section.blocks %}
+      <div class="slide" {{ block.shopify_attributes }}>
+        {% if block.settings.image %}
+          <img
+            src="{{ block.settings.image | image_url: width: 1200 }}"
+            alt="slide"
+            loading="lazy"
+          >
+        {% endif %}
+
+        {% if block.settings.text != blank %}
+          <div class="slide-text">
+            {{ block.settings.text }}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="slider-btn prev">‹</button>
+  <button class="slider-btn next">›</button>
+</div>
+
+<style>
+  .manual-slider {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .slide {
+    min-width: 100%;
+    position: relative;
+    text-align: center;
+  }
+
+  .slide img {
+    width: 100%;
+    display: block;
+  }
+
+  .slide-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 20px;
+  }
+
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+
+  .prev {
+    left: 10px;
+  }
+  .next {
+    right: 10px;
+  }
+
+  .slider-btn:hover {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+
+    const slider = document.querySelector("#slider-{{ section.id }}");
+    const track = slider.querySelector(".slider-track");
+    const slides = slider.querySelectorAll(".slide");
+    const nextBtn = slider.querySelector(".next");
+    const prevBtn = slider.querySelector(".prev");
+
+    let index = 0;
+    const totalSlides = slides.length;
+
+    function updateSlider() {
+      track.style.transform = "translateX(-" + (index * 100) + "%)";
+    }
+
+    nextBtn.addEventListener("click", function() {
+      index = (index + 1) % totalSlides;
+      updateSlider();
+    });
+
+    prevBtn.addEventListener("click", function() {
+      index = (index - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    });
+
+    {% if section.settings.autoplay %}
+      setInterval(function() {
+        index = (index + 1) % totalSlides;
+        updateSlider();
+      }, {{ section.settings.autoplay_speed }});
+    {% endif %}
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Slider manual",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Activar autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Velocidad autoplay (ms)",
+      "min": 2000,
+      "max": 8000,
+      "step": 500,
+      "default": 4000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Slider manual",
+      "blocks": [{ "type": "slide" }, { "type": "slide" }]
+    }
+  ]
+}
+{% endschema %}
