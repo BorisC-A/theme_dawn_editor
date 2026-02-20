@@ -1,11 +1,7 @@
 {{ 'component-manual-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-manual-slider.js' | asset_url | script_tag }}
 
-<div
-  class="manual-slider"
-  data-autoplay="{{ section.settings.autoplay }}"
-  data-speed="{{ section.settings.autoplay_speed }}"
->
+<div class="manual-slider" id="slider-{{ section.id }}">
   <div class="slider-track">
     {% for block in section.blocks %}
       <div class="slide" {{ block.shopify_attributes }}>
