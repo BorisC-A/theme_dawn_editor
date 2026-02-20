@@ -9,6 +9,8 @@
             {% if product.featured_image %}
               <img
                 src="{{ product.featured_image | image_url: width: 500 }}"
+                width="500"
+                height="500"
                 alt="{{ product.title }}"
                 loading="lazy"
                 class="collection-card__image"
