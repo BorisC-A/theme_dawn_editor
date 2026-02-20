@@ -242,6 +242,36 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "icon_text_blocks_CwkxyU": {
+      "type": "icon-text-blocks",
+      "blocks": {
+        "icon_text_YbtHfK": {
+          "type": "icon_text",
+          "settings": {
+            "text": "Texto descriptivo"
+          }
+        },
+        "icon_text_V8JWyb": {
+          "type": "icon_text",
+          "settings": {
+            "text": "Texto descriptivo"
+          }
+        },
+        "icon_text_raWgea": {
+          "type": "icon_text",
+          "settings": {
+            "text": "Texto descriptivo"
+          }
+        }
+      },
+      "block_order": [
+        "icon_text_YbtHfK",
+        "icon_text_V8JWyb",
+        "icon_text_raWgea"
+      ],
+      "name": "Iconos con texto",
+      "settings": {}
     }
   },
   "order": [
@@ -254,6 +284,7 @@
     "collection_grid_custom",
     "video",
     "ultima-imagen",
-    "multicolumn"
+    "multicolumn",
+    "icon_text_blocks_CwkxyU"
   ]
 }
