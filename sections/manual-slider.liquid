@@ -1,5 +1,5 @@
 {{ 'component-manual-slider.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'component-manual-slider.js' | asset_url }}" defer="defer"></script>
+{{ 'component-manual-slider.js' | asset_url | script_tag }}
 
 <div class="manual-slider" id="slider-{{ section.id }}">
   <div class="slider-track">
