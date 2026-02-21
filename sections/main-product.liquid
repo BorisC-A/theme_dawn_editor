@@ -113,7 +113,13 @@
                     show_badges: true,
                     price_class: 'price--large'
                   -%}
-                  <h1>dsjdbah</h1>
+                  <!-- PRUEBA DE METAFIELD -->
+                  {% if product.metafields.custom.nota_especial.value != blank %}
+                    <div>
+                      <strong>Nota especial:</strong>
+                      {{ product.metafields.custom.nota_especial.value }}
+                    </div>
+                  {% endif %}
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
