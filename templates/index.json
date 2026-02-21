@@ -17,9 +17,7 @@
     },
     "destacados_section": {
       "type": "destacados-section",
-      "settings": {
-        "product": "firma"
-      }
+      "settings": {}
     },
     "image_banner": {
       "type": "image-banner",
@@ -58,7 +56,6 @@
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
-        "image_behavior": "none",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
         "show_text_box": false,
@@ -90,8 +87,6 @@
         "text"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
         "color_scheme": "scheme-1",
         "full_width": true,
         "padding_top": 40,
@@ -105,21 +100,13 @@
         "products_to_show": 8,
         "title": "Featured products",
         "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
         "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
         "show_view_all": false,
-        "view_all_style": "solid",
         "color_scheme": "scheme-1",
         "image_ratio": "adapt",
-        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 28,
@@ -159,7 +146,6 @@
         "heading_size": "h2",
         "desktop_layout": "left",
         "mobile_layout": "collage",
-        "card_styles": "product-card-wrapper",
         "color_scheme": "scheme-1",
         "padding_top": 36,
         "padding_bottom": 36
@@ -168,7 +154,7 @@
     "collection_grid_custom": {
       "type": "collection-grid-custom",
       "settings": {
-        "collection": "coleccion-primeros-4",
+        "collection": "frontpage",
         "products_to_show": 4
       }
     },
@@ -177,7 +163,6 @@
       "settings": {
         "heading": "",
         "heading_size": "h1",
-        "enable_video_looping": false,
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "full_width": false,
@@ -242,59 +227,6 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "icon_text_blocks_CwkxyU": {
-      "type": "icon-text-blocks",
-      "blocks": {
-        "icon_text_YbtHfK": {
-          "type": "icon_text",
-          "settings": {
-            "icon_image": "shopify://shop_images/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg",
-            "text": "Texto editable 1"
-          }
-        },
-        "icon_text_V8JWyb": {
-          "type": "icon_text",
-          "settings": {
-            "icon_image": "shopify://shop_images/iphone-detects-qr-code.jpg",
-            "text": "Texto editable 2"
-          }
-        }
-      },
-      "block_order": [
-        "icon_text_YbtHfK",
-        "icon_text_V8JWyb"
-      ],
-      "name": "Iconos con texto",
-      "settings": {}
-    },
-    "manual_slider_GpmWAf": {
-      "type": "manual-slider",
-      "blocks": {
-        "slide_7WDkJy": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/secu.jpg",
-            "text": ""
-          }
-        },
-        "slide_eNJxqm": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/b.jpg",
-            "text": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_7WDkJy",
-        "slide_eNJxqm"
-      ],
-      "name": "Slider manual",
-      "settings": {
-        "autoplay": false,
-        "autoplay_speed": 4000
-      }
     }
   },
   "order": [
@@ -307,8 +239,6 @@
     "collection_grid_custom",
     "video",
     "ultima-imagen",
-    "multicolumn",
-    "icon_text_blocks_CwkxyU",
-    "manual_slider_GpmWAf"
+    "multicolumn"
   ]
 }
