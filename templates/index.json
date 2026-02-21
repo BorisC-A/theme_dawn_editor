@@ -279,12 +279,14 @@
         "slide_3AwbpK": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/a.jpg",
             "text": ""
           }
         },
         "slide_Bg6rKY": {
           "type": "slide",
           "settings": {
+            "image": "shopify://shop_images/person-stands-on-rocks-poking-out-of-the-ocean-shoreline.jpg",
             "text": ""
           }
         }
