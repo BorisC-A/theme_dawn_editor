@@ -1,0 +1,20 @@
+<section class="product-extra-info">
+  {% if product.metafields.custom.nota_especial != blank %}
+    <div class="metafield-nota">
+      <strong>Nota especial, metafield:</strong>
+      {{ product.metafields.custom.nota_especial.value }}
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Info extra del producto",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Info extra del producto"
+    }
+  ]
+}
+{% endschema %}
