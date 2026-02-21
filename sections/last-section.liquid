@@ -1,0 +1,20 @@
+<div>
+  {% if section.settings.ultima_imagen %}
+    {{ section.settings.ultima_imagen | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'mi-imagen' }}
+  {% else %}
+    <p>No hay imagen seleccionada</p>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "ultima_imagen",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "ultima_imagen",
+      "label": "ultima imagen"
+    }
+  ]
+}
+{% endschema %}
