@@ -1,0 +1,68 @@
+{% if section.settings.collection != blank %}
+  {% assign collection = section.settings.collection %}
+
+  <div class="collection-grid">
+    {% for product in collection.products limit: section.settings.products_to_show %}
+      <div class="collection-card">
+        <a href="{{ product.url }}" class="collection-card__link">
+          <div class="collection-card__image-wrapper">
+            {% if product.featured_image %}
+              <img
+                src="{{ product.featured_image | image_url: width: 500 }}"
+                width="250"
+                height="250"
+                alt="{{ product.title }}"
+                loading="lazy"
+                class="collection-card__image"
+              >
+            {% endif %}
+
+            {% unless product.available %}
+              <span class="collection-card__badge"> Agotado </span>
+            {% endunless %}
+          </div>
+
+          <div class="collection-card__info">
+            <h3 class="collection-card__title">
+              {{ product.title }}
+            </h3>
+
+            <p class="collection-card__price">
+              {{ product.price | money }}
+            </p>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+{% else %}
+  <p>No hay colección seleccionada.</p>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Collection Grid Custom",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Seleccionar colección"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Número de productos",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Grid Custom"
+    }
+  ]
+}
+{% endschema %}

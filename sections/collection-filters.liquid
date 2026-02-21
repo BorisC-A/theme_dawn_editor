@@ -1,0 +1,381 @@
+{% comment %} sections/collection-filters.liquid {% endcomment %}
+
+<div class="collection-page">
+  {%- comment -%} ── FILTROS ── {%- endcomment -%}
+  <form id="filters-form" class="collection-filters">
+    <h3 class="filters-title">Filtrar por</h3>
+
+    {% for filter in collection.filters %}
+      {%- comment -%} ── PRECIO ── {%- endcomment -%}
+      {% if filter.type == 'price_range' %}
+        <div class="filter-group">
+          <h4 class="filter-label">Precio</h4>
+          <div class="filter-price-inputs">
+            <div class="price-input">
+              <label>Mínimo</label>
+              <input
+                type="number"
+                name="{{ filter.min_value.param_name }}"
+                value="{{ filter.min_value.value | divided_by: 100 }}"
+                placeholder="$0"
+                min="0"
+              >
+            </div>
+            <span class="price-separator">—</span>
+            <div class="price-input">
+              <label>Máximo</label>
+              <input
+                type="number"
+                name="{{ filter.max_value.param_name }}"
+                value="{{ filter.max_value.value | divided_by: 100 }}"
+                placeholder="${{ filter.range_max | divided_by: 100 }}"
+                max="{{ filter.range_max | divided_by: 100 }}"
+              >
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {%- comment -%} ── DISPONIBILIDAD ── {%- endcomment -%}
+      {% if filter.type == 'list' and filter.label == 'Availability' %}
+        <div class="filter-group">
+          <h4 class="filter-label">Disponibilidadddd</h4>
+          {% for value in filter.values %}
+            <label class="filter-checkbox">
+              <input
+                type="checkbox"
+                name="{{ value.param_name }}"
+                value="{{ value.value }}"
+                {% if value.active %}
+                  checked
+                {% endif %}
+              >
+              {{ value.label }}
+              <span class="filter-count">({{ value.count }})</span>
+            </label>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endfor %}
+
+    <div class="filter-actions">
+      <button type="submit" class="btn-apply">Aplicar filtros</button>
+      <a href="{{ collection.url }}" class="btn-clear">Limpiar</a>
+    </div>
+  </form>
+
+  {%- comment -%} ── PRODUCTOS ── {%- endcomment -%}
+  <div class="collection-products">
+    {%- comment -%} Resultados activos {%- endcomment -%}
+    {% if collection.filters.size > 0 %}
+      <div class="active-filters">
+        {% for filter in collection.filters %}
+          {% for value in filter.active_values %}
+            <span class="active-filter-tag">
+              {{ value.label }}
+              <a href="{{ value.url_to_remove }}">✕</a>
+            </span>
+          {% endfor %}
+          {% if filter.type == 'price_range' %}
+            {% if filter.min_value.value or filter.max_value.value %}
+              <span class="active-filter-tag">
+                ${{ filter.min_value.value | divided_by: 100 }} — ${{ filter.max_value.value | divided_by: 100 }}
+                <a href="{{ filter.url_to_remove }}">✕</a>
+              </span>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {%- comment -%} Contador de resultados {%- endcomment -%}
+    <p class="results-count">
+      {{ collection.products_count }} producto{% if collection.products_count != 1 %}s{% endif %}
+    </p>
+
+    {%- comment -%} Grid de productos {%- endcomment -%}
+    {% if collection.products.size > 0 %}
+      <div class="products-grid">
+        {% for product in collection.products %}
+          <div class="product-card">
+            <a href="{{ product.url }}">
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | img_url: '400x400', crop: 'center' }}"
+                  alt="{{ product.title }}"
+                  loading="lazy"
+                >
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+
+              {% unless product.available %}
+                <span class="badge-out">Sin stock</span>
+              {% endunless %}
+            </a>
+
+            <div class="product-card__info">
+              <p class="product-card__title">{{ product.title }}</p>
+              <p class="product-card__price">
+                {% if product.compare_at_price > product.price %}
+                  <span class="price-compare">{{ product.compare_at_price | money }}</span>
+                {% endif %}
+                {{ product.price | money }}
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    {% else %}
+      <div class="no-results">
+        <p>No se encontraron productos con estos filtros.</p>
+        <a href="{{ collection.url }}">Ver todos los productos</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .collection-page {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    align-items: flex-start;
+  }
+
+  /* ── Filtros ── */
+  .collection-filters {
+    width: 260px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 20px;
+  }
+
+  .filters-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #000;
+  }
+
+  .filter-group {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .filter-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .filter-price-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .price-input {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .price-input label {
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+  }
+
+  .price-input input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .price-separator {
+    color: #aaa;
+    margin-top: 16px;
+  }
+
+  .filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .filter-checkbox input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .filter-count {
+    color: #aaa;
+    font-size: 12px;
+    margin-left: auto;
+  }
+
+  .filter-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .btn-apply {
+    padding: 12px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .btn-clear {
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    text-decoration: underline;
+  }
+
+  /* ── Productos ── */
+  .collection-products {
+    flex: 1;
+  }
+
+  .active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .active-filter-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background: #f0f0f0;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+
+  .active-filter-tag a {
+    color: #666;
+    text-decoration: none;
+    font-size: 11px;
+  }
+
+  .results-count {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 20px;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .product-card {
+    position: relative;
+  }
+
+  .product-card a {
+    display: block;
+    text-decoration: none;
+  }
+
+  .product-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .badge-out {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff4444;
+    color: #fff;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  .product-card__info {
+    padding: 10px 4px 0;
+  }
+
+  .product-card__title {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #000;
+  }
+
+  .product-card__price {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  .price-compare {
+    text-decoration: line-through;
+    color: #aaa;
+    font-weight: 400;
+    margin-right: 6px;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #888;
+  }
+
+  .no-results a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #000;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .collection-page {
+      flex-direction: column;
+    }
+    .collection-filters {
+      width: 100%;
+      position: static;
+    }
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Colección con Filtros",
+  "settings": [],
+  "presets": [{ "name": "Colección con Filtros" }]
+}
+{% endschema %}
